@@ -18,9 +18,13 @@ ggplot(mpg, aes(x=displ)) + geom_histogram(bins=10, fill="darkblue",alpha=0.5) +
   scale_x_continuous(breaks=1:7)
 
 ggplot(mpg, aes(x=class, y=hwy)) + geom_boxplot(aes(fill=class),show.legend=F,alpha=0.3, outlier.alpha = 1)
+ggplot(mpg, aes(x=hwy, y=class)) + geom_boxplot(aes(fill=class), alpha=0.5, outlier.alpha=1 )+ 
+   scale_fill_viridis(discrete=T) + geom_point(stat="summary", fun="mean", shape=15,color="red")
 ggplot(mpg, aes(y=fct_reorder(class, hwy, .fun=median,.desc=T), x=hwy)) + 
    geom_boxplot(aes(fill=class),show.legend=F,alpha=0.3, outlier.alpha = 1) + labs(y="Class")
 
 ggplot(mpg, aes(x=class,y=hwy)) + geom_violin(aes(fill=class), show.legend=F,alpha=0.4,color=NA) + 
    scale_fill_viridis(discrete=T) 
+
+
 #
