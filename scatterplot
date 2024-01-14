@@ -23,9 +23,11 @@ ggplot(humans, aes(x=mass, y=height)) + geom_point(aes(color=BMI),size=3) + scal
 mypalette <- c("royalblue","forestgreen","gold","darkorange","firebrick")
 # scale_color_gradientn(colors=mypalette)
 
-humans$BMI_cat <- cut(humans$BMI, breaks=c(0,18.5,25,30,35,Inf), labels=c("Underweight","Normal","Overweight","Obese","Extremely Obese"), right=F)
+bmi_cat <- c("Underweight","Normal","Overweight","Obese","Extremely Obese")
+humans$BMI_cat <- cut(humans$BMI, breaks=c(0,18.5,25,30,35,Inf), labels=bmi_cat, right=F)
 ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI_cat),size=3)
-ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI_cat),size=3) + scale_color_manual(values=mypalette, name="BMI")
+ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI_cat),size=3) + 
+     scale_color_manual(values=mypalette, name="BMI")
 
 library(ggrepel)
 ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(colo=BMI_cat),size=3,alpha=0.4) + 
