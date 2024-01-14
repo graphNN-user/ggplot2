@@ -1,0 +1,24 @@
+# https://seananderson.ca/2013/10/19/reshape/
+# convert between long and wide format
+
+library(reshape2)
+head(airquality)
+
+aql <- melt(airquality, id.vars = c("Month","Day"))
+head(aql)
+aql <- melt(airquality, id.vars = c("Month","Day"), variable.name = "climate_variable", value.name = "climate_value")
+head(aql)
+
+# convert continuous variable to categrical
+df <- data.frame(team=c('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'),
+                 points=c(78, 82, 86, 94, 99, 104, 109, 110))
+head(df)
+df$cat <- cut(df$points, breaks=c(70, 80, 90, 100, 110), labels=c('Bad', 'OK', 'Good', 'Great'))
+table(df$cat)
+
+# Convert One Categorical Variable to Numeric
+df <- data.frame(team=as.factor(c('A', 'B', 'C', 'D')),  conf=as.factor(c('AL', 'AL', 'NL', 'NL')),
+                 win=as.factor(c('Yes', 'No', 'No', 'Yes')),   points=c(122, 98, 106, 115))
+df$team <- unclass(df$team)
+df
+
