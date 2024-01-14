@@ -1,0 +1,18 @@
+
+# histogram, freqpoly and density
+library(ggplot2)
+library(ggridges)
+
+ggplot(diamonds, aes(x=price)) + geom_histogram(bins=30)
+
+ggplot(diamonds, aes(x=price, color=cut)) + geom_freqpoly(binwidth=500)
+
+ggplot(diamonds, aes(x=price, color=cut, fill=cut)) + geom_density(alpha=0.2)
+
+ggplot(diamonds, aes(x=depth, color=cut, fill=cut)) + geom_density_ridges(aes(y=cut), alpha=0.4)
+
+ggplot(mpg, aes(x=displ)) + geom_histogram(bins=10, fill="darkblue",alpha=0.5) + 
+  geom_sf_text(stat="bin", bins=10,mapping=aes(label=stat(count),y=stat(count)), nudge_y=2,color="darkblue",size=3) + 
+  scale_x_continuous(breaks=1:7)
+
+  #
