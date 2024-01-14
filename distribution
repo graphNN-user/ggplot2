@@ -1,7 +1,8 @@
+# histogram, freqpoly, boxplot and density
 
-# histogram, freqpoly and density
 library(ggplot2)
 library(ggridges)
+library(forcats)
 
 ggplot(diamonds, aes(x=price)) + geom_histogram(bins=30)
 
@@ -15,4 +16,8 @@ ggplot(mpg, aes(x=displ)) + geom_histogram(bins=10, fill="darkblue",alpha=0.5) +
   geom_sf_text(stat="bin", bins=10,mapping=aes(label=stat(count),y=stat(count)), nudge_y=2,color="darkblue",size=3) + 
   scale_x_continuous(breaks=1:7)
 
-  #
+ggplot(mpg, aes(x=class, y=hwy)) + geom_boxplot(aes(fill=class),show.legend=F,alpha=0.3, outlier.alpha = 1)
+ggplot(mpg, aes(y=fct_reorder(class, hwy, .fun=median,.desc=T), x=hwy)) + 
+   geom_boxplot(aes(fill=class),show.legend=F,alpha=0.3, outlier.alpha = 1)
+
+#
