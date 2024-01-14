@@ -26,5 +26,6 @@ ggplot(mpg, aes(y=fct_reorder(class, hwy, .fun=median,.desc=T), x=hwy)) +
 ggplot(mpg, aes(x=class,y=hwy)) + geom_violin(aes(fill=class), show.legend=F,alpha=0.4,color=NA) + 
    scale_fill_viridis(discrete=T) 
 
-
+ggplot(mpg, aes(x=hwy, y=class)) + geom_violin(aes(fill=class), alpha=0.4,color=NA) + 
+   geom_boxplot(fill=NA, width=0.2) + scale_fill_viridis(discrete=T)
 #
