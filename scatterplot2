@@ -12,3 +12,9 @@ ggplot(mpg, aes(x=class,y=hwy,color=class)) + geom_jitter(alpha=0.4) +
   geom_point(data=class_info, mapping=aes(x=class,y=hwy_mean), size=4) +
   geom_text(data=class_info, mapping=aes(y=hwy_mean,label=n)) +
   labs(title="Fuel consuption per class of vehicle",x="class of vehicle",y="highway fuel consumptions")
+
+# use stat to display mean
+ggplot(mpg,aes(x=class,y=hwy)) + geom_jitter(aes(color=class),size=3) + 
+  stat_summary(color="red",fun=mean,size=1)
+
+#
