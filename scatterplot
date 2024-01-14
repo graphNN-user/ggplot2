@@ -1,0 +1,35 @@
+
+library(ggplot2)
+library(dplyr)
+
+head(starwars)
+humans <- filter(starwars, species=="Human")
+head(humans2)
+humans <- select(humans, name, height, mass)
+humans <- na.omit(humans)
+#humans <- na.omit(select(filter(starwars, species == "Human"), name, height, mass))
+
+ggplot(humans,aes(x=mass,y=height)) + geom_point()
+ggplot(humans,aes(x=mass,y=height)) + geom_jitter(size=4,alpha=0.4,color="red")
+
+humans <- mutate(humans, BMI = mass/(height/100)^2)
+head(humans)
+ggplot(humans, aes(x=mass, y=height)) + geom_point(aes(color=BMI),size=3)
+ggplot(humans, aes(x=mass, y=height)) + geom_point(aes(color=BMI),size=3) + scale_color_gradient(low="green",high="red")
+ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI), size=3) + scale_color_gradient2(low="green",mid="yellow",midpoint=30,high="red")
+ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI), size=3) + scale_color_gradientn(colors=rev(heat.colors(3)))
+
+mypalette <- c("royalblue","forestgreen","gold","darkorange","firebrick")
+ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI), size=3) + scale_color_gradientn(colors=mypalette)
+
+humans$BMI_cat <- cut(humans$BMI, breaks=c(0,18.5,25,30,35,Inf), labels=c("Underweight","Normal","Overweight","Obese","Extremely Obese"), right=F)
+ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI_cat),size=3)
+ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI_cat),size=3) + scale_color_manual(values=mypalette, name="BMI")
+
+ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(colo=BMI_cat),size=3,alpha=0.4) + 
+              scale_color_manual(values=mypalette, name="BMI") + geom_text_repel(aes(label=name))
+
+library(ggrepel)
+ggplot(humans, aes(x=mass,y=height)) + geom_point(aes(color=BMI_cat),size=10,alpha=0.4) + 
+             scale_color_manual(values=mypalette, name="BMI") + geom_text_repel(aes(label=name), max.overlaps = 20)
+
