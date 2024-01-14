@@ -19,3 +19,6 @@ ggplot(mpg,aes(x=class,y=hwy)) + geom_jitter(aes(color=class),size=3) +
 
 # try to use stat_count instead of using class_info for the number of each class
 # but the default geom for stat_count is geom_bar, maybe we can use geom_text?
+ggplot(mpg,aes(x=class,y=hwy)) + geom_jitter(aes(color=class),size=3) + 
+     stat_summary(color="red",fun=mean,size=1) + 
+    geom_text(stat="count",mapping=aes(label=paste0("n=",stat(count))),y=12,color="darkblue",size=3)
