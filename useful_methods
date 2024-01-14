@@ -22,3 +22,10 @@ df <- data.frame(team=as.factor(c('A', 'B', 'C', 'D')),  conf=as.factor(c('AL', 
 df$team <- unclass(df$team)
 df
 
+# extract part of string from a list of string
+file_list <- paste0("sample", sample(1:20, 5),"_id_",sample(20:40,5),".csv")
+sample_list <- sapply(strsplit(file_list, "_"), "[[", 1)
+sample_list
+sample_list2 <- unlist(lapply(strsplit(file_list, "_"),"[[", 1))
+sample_list2
+
