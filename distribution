@@ -1,4 +1,4 @@
-# histogram, freqpoly, boxplot and density
+# histogram, freqpoly, boxplot, violin and density
 
 library(ggplot2)
 library(ggridges)
