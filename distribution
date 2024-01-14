@@ -3,6 +3,7 @@
 library(ggplot2)
 library(ggridges)
 library(forcats)
+library(viridis)
 
 ggplot(diamonds, aes(x=price)) + geom_histogram(bins=30)
 
@@ -20,4 +21,6 @@ ggplot(mpg, aes(x=class, y=hwy)) + geom_boxplot(aes(fill=class),show.legend=F,al
 ggplot(mpg, aes(y=fct_reorder(class, hwy, .fun=median,.desc=T), x=hwy)) + 
    geom_boxplot(aes(fill=class),show.legend=F,alpha=0.3, outlier.alpha = 1) + labs(y="Class")
 
+ggplot(mpg, aes(x=class,y=hwy)) + geom_violin(aes(fill=class), show.legend=F,alpha=0.4,color=NA) + 
+   scale_fill_viridis(discrete=T) 
 #
