@@ -1,0 +1,13 @@
+# position for bar plot
+
+library(ggplot2)
+
+ggplot(mtcars,aes(x=factor(cyl), fill=factor(vs))) + geom_bar(position="stack",alpha=0.4)
+ggplot(mtcars,aes(x=factor(cyl), fill=factor(vs))) + geom_bar(position="fill",alpha=0.4)
+ggplot(mtcars,aes(x=factor(cyl), fill=factor(vs))) + geom_bar(position=position_fill(reverse=F),alpha=0.4)
+ggplot(mtcars,aes(x=factor(cyl), fill=factor(vs))) + geom_bar(position=position_dodge2(preserve="single"),alpha=0.4)
+
+ggplot(diamonds, aes(x=cut, fill=clarity)) + geom_bar(position=position_dodge2(preserve="single"))
+ggplot(diamonds, aes(x=cut, fill=clarity)) + geom_bar() + facet_wrap(vars(clarity)) 
+
+#
