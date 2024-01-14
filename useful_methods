@@ -35,5 +35,10 @@ df <- data.frame(store=rep(c('A', 'B'), each=8), promo=rep(c('Promo 1', 'Promo 2
 ggplot(df, aes(x=week, y=sales, color=store, shape=promo, group=interaction(store, promo))) + 
   geom_point(size=3) + geom_line()
 
+# summarize for one of the variables
+grp <- group_by(mpg, class)
+class_info <- summarise(grp, n=n(), hwy=mean(hwy))
+
+
 
 #
