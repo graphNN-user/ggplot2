@@ -2,6 +2,19 @@
 
 library(ggplot2)
 
-scale_color_continuous == scale_color_gradient # low="blue", high="red"
-scale_color_gradient2  #  low="blue", high="red", mid="yellow", midpoint=20
-scale_color_gradientn  # use a palette, like viridis
+#scale_color_continuous == scale_color_gradient # low="blue", high="red"
+#scale_color_gradient2  #  low="blue", high="red", mid="yellow", midpoint=20
+#scale_color_gradientn  # use a palette, like viridis
+
+ggplot(mtcars, aes(x=mpg,y=wt,color=cyl)) + geom_point(size=3) + scale_color_continuous()
+ggplot(mtcars, aes(x=mpg,y=wt,color=cyl)) + geom_point(size=3) + scale_color_gradient(low="blue",high="red")
+ggplot(mtcars, aes(x=mpg,y=wt,color=cyl)) + geom_point(size=3) + scale_color_gradient2(low="blue",high="red",mid="yellow",midpoint=6)
+ggplot(mtcars, aes(x=mpg,y=wt,color=cyl)) + geom_point(size=3) + scale_color_gradient2(low="blue",high="red",mid="yellow",midpoint=6)
+ggplot(mtcars, aes(x=mpg,y=wt,color=cyl)) + geom_point(size=3) + scale_color_gradientn(colors=c("blue","yellow","red","green"))
+
+
+library(viridis)
+ggplot(mtcars, aes(x=mpg,y=wt, color=factor(cyl))) + geom_point(size=3)
+ggplot(mtcars, aes(x=mpg,y=wt, color=factor(cyl))) + geom_point(size=3) + scale_colour_viridis_d()
+ggplot(mtcars, aes(x=mpg,y=wt, color=cyl)) + geom_point(size=3) + scale_colour_viridis_c()
+
