@@ -1,5 +1,6 @@
 
 library(ggplot2)
 
-
+ggplot(mtcars, aes(x=mpg,y=hp,color=factor(cyl))) + geom_point(size=3) + facet_wrap(vars(cyl))
+ggplot(mtcars, aes(x=mpg,y=hp,color=factor(cyl))) + geom_point(size=3) + facet_wrap(vars(cyl,am))
 
