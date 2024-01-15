@@ -10,7 +10,12 @@ ggplot(mtcars,aes(x=factor(cyl), fill=factor(vs))) + geom_bar(position=position_
 ggplot(diamonds, aes(x=cut, fill=clarity)) + geom_bar(position=position_dodge2(preserve="single"))
 ggplot(diamonds, aes(x=cut, fill=clarity)) + geom_bar() +scale_x_discrete(label=abbreviate) + facet_wrap(vars(clarity))
 
-
+library(forcats)
+library(viridis)
+il <- filter(midwest, state=="IL", poptotal>100000 & poptotal<500000)
+il$county <- factor(il$county)
+il$county <- fct_reorder(il$county, il$poptotal)
+ggplot(il, aes(y=county, x=poptotal, fill=poptotal)) + geom_col(width=0.8) + scale_fill_viridis_b(option="E",direction=-1)
 
 
 #
