@@ -4,3 +4,11 @@ library(ggplot2)
 ggplot(mtcars, aes(x=mpg,y=hp,color=factor(cyl))) + geom_point(size=3) + facet_wrap(vars(cyl))
 ggplot(mtcars, aes(x=mpg,y=hp,color=factor(cyl))) + geom_point(size=3) + facet_wrap(vars(cyl,am))
 
+# note: the order of two geom_point matters, otherwise, use alpha to make it transparent 
+ggplot(iris, aes(x=Sepal.Length, y =Petal.Length)) + 
+   geom_point(data=iris2,mapping=aes(x=Sepal.Length, y=Petal.Length), color="gray") + 
+   geom_point(aes(color=Species)) + facet_wrap(vars(Species))
+
+
+
+#
