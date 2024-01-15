@@ -8,6 +8,9 @@ ggplot(mtcars,aes(x=factor(cyl), fill=factor(vs))) + geom_bar(position=position_
 ggplot(mtcars,aes(x=factor(cyl), fill=factor(vs))) + geom_bar(position=position_dodge2(preserve="single"),alpha=0.4)
 
 ggplot(diamonds, aes(x=cut, fill=clarity)) + geom_bar(position=position_dodge2(preserve="single"))
-ggplot(diamonds, aes(x=cut, fill=clarity)) + geom_bar() + facet_wrap(vars(clarity)) 
+ggplot(diamonds, aes(x=cut, fill=clarity)) + geom_bar() +scale_x_discrete(label=abbreviate) + facet_wrap(vars(clarity))
+
+
+
 
 #
