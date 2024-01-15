@@ -1,0 +1,49 @@
+
+theme_set(theme_minimal)
+
+theme_nice1 <- function( ) {
+  theme_light(base_size=10, base_family="Poppins") +
+    theme(panel.border = element_blank(),
+          panel.grid.minor.x = element_blank(),
+          axis.ticks = element_blank(),
+          legend.position = "top",
+          axis.title.y = element_text(margin=margin(r=10)),
+          axis.title.x = element_text(margin=margin(t=10)),
+          legend.text  = element_text(margin=margin(0,10,0,0)),
+          legend.title = element_text(size = 8),
+          plot.title   = element_text(face="bold")
+          )
+}
+
+theme_nice2 <- function() {
+   theme(plot.title = element_text(size = rel(2)),
+          panel.grid.major.y = element_line(colour = 'gray'),
+          panel.grid.minor.y = element_line(colour = 'gray'),
+          panel.grid.major.x = element_blank(),
+          panel.grid.minor.x = element_blank(),
+          plot.background = element_rect(fill = NULL, colour = 'white'),
+          panel.background = element_rect(fill = 'white'),
+          # Axis stuff
+          axis.line = element_line(colour = 'black', linewidth = 1),
+          axis.text = element_text(colour = "black", face = 'bold'),
+          axis.text.x = element_text(size = rel(1)),
+          axis.text.y = element_text(size = rel(1)),
+          axis.title = element_text(size = rel(1.2)),
+          axis.ticks = element_line(colour = 'black', linewidth = 1.2),
+          # Legend stuff
+          legend.position = "bottom",
+          legend.margin = margin(6, 6, 6, 6),
+          legend.title = element_text(face = 'bold'),
+          legend.background = element_blank(),
+          legend.box.background = element_rect(colour = "black"))
+}
+
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, col = Species)) +
+  geom_point() + 
+  theme_nice1()
+  #theme_nice2()
+
+
+
+
+#
