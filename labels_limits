@@ -1,0 +1,13 @@
+
+library(ggplot2)
+
+ggplot(mtcars,aes(x=mpg,y=wt)) + geom_point() + 
+   labs(x="miles per gallon",y="weight",title="Title of plot",subtitle="this is subtitle", tag="a)") + 
+   lims(x=c(10,20),y=c(NA,6))
+
+#scale_x_continuous
+#scale_y_continuous
+
+
+
+##
